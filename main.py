@@ -1,5 +1,6 @@
 import strands
 import datetime
+from os import system
 
 
 message = """
@@ -31,8 +32,8 @@ def prompt_dye_strand():
   old_strand = input("What is the name of the strand you want to dye? ").strip()
   old_reach = strands.remember_strand(old_strand)
   if old_reach:
-    new_strand = input(f"What name do you want to give {old_strand} now? Leave empty if you want to leave {old_strand}'s name as it is ").strip()
-    new_reach = input("What is their new number now? Leave empty if you do not want to change their number").strip()
+    new_strand = input(f"What name do you want to give {old_strand}? Leave empty if you want to leave {old_strand}'s name as it is ")
+    new_reach = input("What is their new number now? Leave empty if you do not want to change their number" )
     if not new_reach:
       new_reach = old_reach
     if not new_strand:
@@ -53,7 +54,11 @@ def main():
   elif stroke == "3":
     prompt_dye_strand()
 
-main()
+
+while True:
+  system("clear")
+  main()
+  input("Press enter to continue ")
 
 #prompt_remember_strand()
 #moment = datetime.datetime.now()
