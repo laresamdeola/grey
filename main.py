@@ -25,7 +25,23 @@ def prompt_remember_strand():
     print(f"Here are your strand details: {remember}")
   else:
     print(f"This strand, {strand} hasn't grown yet")
-    
+
+
+def prompt_dye_strand():
+  old_strand = input("What is the name of the strand you want to dye? ").strip()
+  old_reach = strands.remember_strand(old_strand)
+  if old_reach:
+    new_strand = input(f"What name do you want to give {old_strand} now? Leave empty if you want to leave {old_strand}'s name as it is ").strip()
+    new_reach = input("What is their new number now? Leave empty if you do not want to change their number").strip()
+    if not new_reach:
+      new_reach = old_reach
+    if not new_strand:
+      strands.dye_strand(old_strand, new_reach)
+    else:
+      strands.dye_reach(old_strand, new_strand, new_reach)
+  else:
+    print(f"{old_strand} is not in your grey")
+      
 
 def main():
   print(message)
@@ -34,6 +50,8 @@ def main():
     prompt_create_strand()
   elif stroke == "2":
     prompt_remember_strand()
+  elif stroke == "3":
+    prompt_dye_strand()
 
 main()
 
