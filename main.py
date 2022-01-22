@@ -42,6 +42,16 @@ def prompt_dye_strand():
       strands.dye_reach(old_strand, new_strand, new_reach)
   else:
     print(f"{old_strand} is not in your grey")
+
+
+def prompt_pluck_strand():
+  the_strand = input("What is the name of the strand you want to delete? ").strip()
+  strand = strands.remember_strand(the_strand)
+  if strand:
+    print(f"This strand {the_strand} has been deleted")
+    strands.pluck_strand(the_strand)
+  else:
+    print(f"This strand {the_strand} has not grown yet.")
       
 
 def main():
@@ -53,6 +63,8 @@ def main():
     prompt_remember_strand()
   elif stroke == "3":
     prompt_dye_strand()
+  elif stroke == "4":
+    prompt_pluck_strand()
 
 
 while True:

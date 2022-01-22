@@ -20,6 +20,11 @@ def dye_strand(old_strand, new_reach):
 def dye_reach(old_strand, new_strand, new_reach):
   db[new_strand] = new_reach
   del db[old_strand]
+
+
+def pluck_strand(the_strand):
+  del db[the_strand]
+  #return db[strand_to_delete]
   
 
 
